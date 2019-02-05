@@ -1,0 +1,48 @@
+
+# Desc: Autonomy Lab 
+# CVS: $Id: autolab.world,v 1.3 2006-03-25 01:15:47 rtv Exp $
+
+# the resolution of Stage's raytrace model in meters
+resolution 0.02 
+
+interval_sim 100  # milliseconds per update step
+interval_real 0 # real-time milliseconds per update step
+
+include "pioneer.inc"
+include "sick.inc"
+include "map.inc"
+
+paused 1
+
+# configure the GUI window
+window
+( 
+  size [ 850 900 ]
+  center [0 0]
+  scale 31.082
+)
+
+# load an environment bitmap
+floorplan
+(
+#  bitmap "/usr/share/stage/worlds/bitmaps/autolab.png"
+  bitmap "autolab.png"
+  size [24.000 24.000 0.500]
+  boundary 1
+  name "lab"
+)
+
+define trickedoutpioneer pioneer2dx
+(
+#sicklaser( pose [0.030 0 0 0.7854 ]  alwayson 1 )
+ sicklaser( pose [0.030 0 0 45 ]  alwayson 1 )
+
+
+ localization "gps"
+ localization_origin [ 0 0 0 0 ]
+ ctrl "hoare-Project3-stage.so"
+)
+
+
+
+trickedoutpioneer( name "foo" pose [2.451 7.364 0 0] )
