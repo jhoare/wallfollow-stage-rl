@@ -1,0 +1,58 @@
+# defines Pioneer-like robots
+include "/usr/share/stage/worlds/pioneer.inc"
+
+# defines 'map' object used for floorplans
+include "/usr/share/stage/worlds/map.inc"
+
+# defines the laser model `sick_laser' configured like a Sick LMS-200
+include "/usr/share/stage/worlds/sick.inc"
+
+# set the resolution of the underlying raytrace model in meters
+resolution 0.04
+
+interval_sim 100  # milliseconds per update step
+interval_real 100 # real-time milliseconds per update step
+
+size [25 25]
+
+gui_disable 0
+gui_interval 100
+gui_menu_interval 20
+
+window( 
+  size [ 850 900 ]
+  center [0  0] 
+  scale 0.03
+)
+
+map( 
+  bitmap "/usr/share/stage/worlds/bitmaps/autolab.png" 
+#  bitmap "autosquare.png"
+  map_resolution 0.02
+  size [24 24] 
+  name "autolab"
+)
+
+# define a robot type
+define robotProj3 pioneer2dx
+(
+  sick_laser
+  (
+    pose [0.030 0.000 45]
+  )
+
+  gripper_return 0
+  localization "gps"
+  localization_origin [0 0 0]
+)
+
+# create a  robot
+robotProj3
+(
+  color "red"
+  name "robotProj3"
+  pose [-3 2 250]
+  gripper(pose [0.200 0.000 0.000] color "gray")
+)
+
+
