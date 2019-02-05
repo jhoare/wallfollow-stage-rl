@@ -30,7 +30,7 @@ extern "C" int Init( Model* mod )
     s->forward = new GoForward(*(s->rc));
     s->left    = new GoLeft(*(s->rc));
     s->right   = new GoRight(*(s->rc));
-    ((RobotCenterStage*)(s->rc))->laser->AddUpdateCallback( (stg_model_callback_t)Update, s );
+    ((RobotCenterStage*)(s->rc))->laser->AddCallback(Stg::Model::CB_UPDATE, (model_callback_t)Update, s );
     ((RobotCenterStage*)(s->rc))->laser->Subscribe();
     cerr << "Init Done" << endl;
     cerr << s << endl;

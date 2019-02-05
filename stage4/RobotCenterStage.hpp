@@ -14,9 +14,9 @@ class RobotCenterStage : public RobotCenter{
         Stg::Model* mod;
         Stg::ModelPosition* pos;
         //Stg::ModelRanger* laser;
-        Stg::ModelLaser* laser;
+        Stg::ModelRanger* laser;
 
-        Stg::stg_radians_t a_last;
-        Stg::stg_meters_t x_last;
-        Stg::stg_meters_t y_last;
+        Stg::radians_t a_last;
+        Stg::meters_t x_last;
+        Stg::meters_t y_last;
 };

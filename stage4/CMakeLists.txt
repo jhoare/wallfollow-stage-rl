@@ -1,7 +1,6 @@
 cmake_minimum_required( VERSION 2.6 )
 
-include(FindPkgConfig)
-pkg_search_module( STAGE REQUIRED stage )
+find_package(STAGE REQUIRED)
 
 include_directories( ${STAGE_INCLUDE_DIRS} .. /usr/include/glib-2.0/ /usr/lib/glib-2.0/include )
 link_directories( ${STAGE_LIBRARY_DIRS} )

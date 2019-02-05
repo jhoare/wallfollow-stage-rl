@@ -82,7 +82,7 @@ extern "C" int Init( Model* mod )
     s->left    = new GoLeft(*(s->rc));
     s->right   = new GoRight(*(s->rc));
     s->mystage = FIRST;
-    mod->AddUpdateCallback( (stg_model_callback_t)Update, s );
+    mod->AddCallback(Stg::Model::CB_UPDATE, (model_callback_t)Update, s );
     cerr << "Init Done" << endl;
     cerr << s << endl;
     
@@ -94,53 +94,6 @@ extern "C" int Init( Model* mod )
         s->ss->LoadState("state.dat");
     }
 }
-//int main(int argc, char* argv[]){
-    /*
-    PlayerCc::PlayerClient robot("localhost", 6665);
-    PlayerCc::LaserProxy lp(&robot,0);
-    PlayerCc::Position2dProxy pp(&robot,0);
-    PlayerCc::SimulationProxy sim(&robot);
-    */
-
-/*
-    RobotCenterStage rc;
-    cout << "Num of states: " << num_of_states << endl
-         << "Num of actions: " << num_of_actions << endl;
-    StateSpace ss(rc, num_of_states, num_of_actions);
-    State s,s_prime;
-
-
-    if ( argc != 2 && argc != 3 ){
-        print_usage(argv[0]);
-        exit(1);
-    }
-
-    double epsilon = atof(argv[1]);
-    
-    cout << "Starting with epsilon=" << epsilon << endl;
-
-    if ( argc == 3 ) { 
-        {
-            // Check to see if this file exists...
-            fstream infile(argv[2], ios::in);
-            if (infile.fail()){
-                print_usage(argv[0]);
-                exit(1);
-            }
-            infile.close();
-        }
-        // If we have two arguments, 
-        ss.LoadState(argv[2]);
-    }
-
-    Action* theAction;
-    GoForward forward(rc);
-    GoLeft left(rc);
-    GoRight right(rc);
-    double r;
-    */
-
-
 void EndEpisode(){
     /// Reset the robot's location
     episodes++;
