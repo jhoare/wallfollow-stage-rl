@@ -9,5 +9,3 @@ Grad-School (University of Tennessee)
 
 See the PDF files for details (both the given problem statement and my final
 report that accomponied my code).
-
-TODO: This does not currently work with the latest version of stage. (stage4)
